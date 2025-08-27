@@ -109,15 +109,15 @@ function playScoldVideo(){
   const now = Date.now();
   if (now - lastScoldAt < 3000) return;
   lastScoldAt = now;
-  playVideoFile("叱られる猫.mp4");
+  playVideoFile("mp4/叱られる猫.mp4");
 }
 function playFinishVideo(){
-  playVideoFile("Dubidubidu猫（ちぴちゃぱ）.mp4");
+  playVideoFile("mp4/Dubidubidu猫（ちぴちゃぱ）.mp4");
 }
 function playExplosion(){
   document.body.classList.add("boom");
   setTimeout(()=>document.body.classList.remove("boom"), 700);
-  playVideoFile("爆発素材.mp4", {autoclose:false}); // ユーザーに閉じてもらう
+  playVideoFile("mp4/爆発素材.mp4", {autoclose:false}); // ユーザーに閉じてもらう
 }
 
 // ====== ユーティリティ ======
