@@ -1,0 +1,106 @@
+*{box-sizing:border-box}
+body{
+  margin:0;padding:16px;background:#f7f7fb;color:#222;
+  font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7
+}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.actions{display:flex;gap:8px;align-items:center}
+h1{font-size:20px;margin:0}
+button{border:none;background:#222;color:#fff;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.danger{background:#b00020}
+
+.layout{max-width:980px;margin:16px auto;display:grid;grid-template-columns:280px 1fr;gap:16px}
+@media (max-width:880px){.layout{grid-template-columns:1fr}}
+
+.cat-wrap{display:grid;gap:12px}
+.cat{
+  position:relative;display:grid;place-items:center;background:#fff;border:1px solid #ececf2;border-radius:16px;padding:18px
+}
+.cat-svg{width:160px;height:auto;transition:transform .15s}
+.speech{
+  position:absolute;bottom:8px;background:#fff;border:1px solid #ddd;border-radius:999px;padding:4px 10px;
+  font-size:13px;color:#444;opacity:.9
+}
+.aura{
+  position:absolute;inset:8px;border-radius:14px;pointer-events:none;opacity:0;box-shadow:0 0 0 0 rgba(255,192,203,.0);
+  transition:opacity .2s;
+}
+.cat.purr .cat-svg{transform:scale(1.03)}
+.cat.purr .aura{opacity:1;animation:purrGlow 1.2s ease-in-out infinite}
+@keyframes purrGlow{
+  0%{box-shadow:0 0 0 0 rgba(255,105,180,.25)}
+  50%{box-shadow:0 0 30px 8px rgba(255,105,180,.35)}
+  100%{box-shadow:0 0 0 0 rgba(255,105,180,.25)}
+}
+.cat.hiss{animation:shake .28s linear 1}
+@keyframes shake{
+  0%{transform:translateX(0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+  100%{transform:translateX(0)}
+}
+
+.stats{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(120px,1fr))}
+.stats>div{
+  background:#fff;border:1px solid #ececf2;border-radius:12px;padding:10px;text-align:center;
+  font-variant-numeric:tabular-nums
+}
+
+.board{
+  background:#fff;border:1px solid #ececf2;border-radius:16px;padding:16px;display:grid;gap:12px
+}
+.label{font-size:12px;color:#666}
+.target{
+  min-height:56px;font-size:clamp(18px,2.4vw,28px);letter-spacing:.6px;word-spacing:10px;line-height:1.6
+}
+.char{opacity:.7}
+.char.good{color:#1a7f37;opacity:1}
+.char.bad{color:#c62828;text-decoration:underline}
+
+.preview{font-size:13px;color:#666}
+.typer{
+  width:100%;padding:12px 14px;border:2px solid #ddd;border-radius:10px;font-size:18px;outline:none
+}
+.typer:focus{border-color:#aaa}
+.bar{height:8px;background:#efefef;border-radius:999px;overflow:hidden}
+.bar>div{height:100%;width:0;background:#6aa8ff;transition:width .12s linear}
+
+.paw{
+  position:fixed;left:0;top:0;pointer-events:none;font-size:22px;opacity:0;transform:translate(-50%,-50%) scale(1);
+  animation:pawPop .7s ease-out forwards;
+}
+@keyframes pawPop{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}
+  20%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-100%) scale(1.2)}
+}
+
+.foot{max-width:980px;margin:8px auto 0;color:#666;font-size:12px}
+
+/* ===== 動画オーバーレイ ===== */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.6);
+  display:none;align-items:center;justify-content:center;padding:16px;z-index:9999;
+}
+.overlay.show{display:flex}
+.overlay-inner{
+  width:min(900px,96vw);background:#000;border-radius:12px;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.4)
+}
+#overlayVideo{width:100%;height:auto;display:block;border-radius:12px}
+.overlay-close{
+  position:absolute;right:8px;top:8px;border:none;border-radius:999px;width:36px;height:36px;font-size:22px;cursor:pointer;
+  background:rgba(255,255,255,.85);color:#000
+}
+
+/* 危険ボタン→爆発のときの画面シェイク */
+body.boom{animation:boomShake .5s linear 1}
+@keyframes boomShake{
+  0%,100%{transform:none}
+  20%{transform:translate(-8px,-6px) rotate(-1deg)}
+  40%{transform:translate(6px,4px) rotate(1deg)}
+  60%{transform:translate(-6px,3px) rotate(-1deg)}
+  80%{transform:translate(5px,-4px) rotate(1deg)}
+}

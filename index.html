@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>猫打 - NekoType（動画対応）</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🐾 猫打（NekoType）</h1>
+    <div class="actions">
+      <button id="dangerBtn" class="danger">⚠️ 絶対押さないで</button>
+      <button id="startBtn">▶ 開始（60秒）</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="cat-wrap">
+      <div id="cat" class="cat">
+        <svg viewBox="0 0 120 120" class="cat-svg" aria-hidden="true">
+          <circle cx="60" cy="65" r="42" fill="#222"/>
+          <polygon points="25,40 10,10 40,25" fill="#222"/>
+          <polygon points="95,40 110,10 80,25" fill="#222"/>
+          <circle cx="45" cy="70" r="6" fill="#fff"/>
+          <circle cx="75" cy="70" r="6" fill="#fff"/>
+          <circle cx="45" cy="70" r="3" fill="#111"/>
+          <circle cx="75" cy="70" r="3" fill="#111"/>
+          <ellipse cx="60" cy="85" rx="10" ry="7" fill="#f3a"/>
+        </svg>
+        <div id="catAura" class="aura"></div>
+        <div id="speech" class="speech">にゃー</div>
+      </div>
+      <div class="stats">
+        <div>⏱ 残り <span id="time">60</span>s</div>
+        <div>⌨️ WPM <span id="wpm">0</span></div>
+        <div>🎯 正確率 <span id="acc">0</span>%</div>
+        <div>🔥 連続正解 <span id="combo">0</span></div>
+        <div>❌ ミス <span id="miss">0</span></div>
+      </div>
+    </section>
+
+    <section class="board">
+      <div class="label">お題</div>
+      <div id="target" class="target"></div>
+      <div class="preview">次：<span id="preview"></span></div>
+
+      <input id="input" class="typer" type="text" placeholder="ここにタイプ" autocomplete="off" disabled>
+      <div class="bar"><div id="barFill"></div></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <small>
+      動画ファイル <code>叱られる猫.mp4</code> / <code>Dubidubidu猫（ちぴちゃぱ）.mp4</code> / <code>爆発素材.mp4</code> を
+      このHTMLと同じフォルダに入れてください。
+    </small>
+  </footer>
+
+  <!-- 動画オーバーレイ -->
+  <div id="videoOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-inner">
+      <video id="overlayVideo" playsinline controls></video>
+      <button id="overlayClose" class="overlay-close" aria-label="閉じる">×</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
